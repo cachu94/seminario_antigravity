@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival del Imperio Sur 2026 — Sitio Web Oficial | Río Cuarto</title>
+    <meta name="description" content="Sitio oficial del Festival del Imperio Sur 2026 en el Autódromo Parque Ciudad de Río Cuarto. 6 días de música, feria gastronómica, feria de emprendedores y los artistas más destacados.">
+    
+    <!-- Google Fonts: Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- TailwindCSS v3 via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rio: {
+                            blue: '#0052A5',
+                            green: '#00923F',
+                            light: '#F8FAFC'
+                        },
+                        fest: {
+                            purple: '#7D00BA',
+                            orange: '#BA7C00',
+                            cyan: '#00BA7C',
+                            dark: '#0F172A',
+                            surface: '#1E293B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        title: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-[#00923F] selection:text-white dark:selection:bg-[#7D00BA] dark:selection:text-white transition-colors duration-300 overflow-x-hidden">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER & NAVBAR FIJO                    -->
+    <!-- ========================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Marca Identitaria -->
+                <a href="#inicio" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#0052A5] dark:focus:ring-[#7D00BA] rounded-xl p-1">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#0052A5] to-[#00923F] dark:from-[#7D00BA] dark:to-[#00BA7C] flex items-center justify-center text-white shadow-md shadow-[#0052A5]/20 dark:shadow-[#7D00BA]/30 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-title font-extrabold text-lg sm:text-xl tracking-tight text-[#0052A5] dark:text-white leading-tight">
+                            Festival del <span class="text-[#00923F] dark:text-[#00BA7C]">Imperio Sur</span>
+                        </span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 font-medium tracking-wide uppercase">
+                            Río Cuarto • 2026
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Navegación de Escritorio -->
+                <nav aria-label="Navegación principal" class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="#inicio" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-[#0052A5] dark:hover:text-[#00BA7C] hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all">Inicio</a>
+                    <a href="#espacios" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-[#0052A5] dark:hover:text-[#00BA7C] hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all">Espacios & Ferias</a>
+                    <a href="#lineup" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-[#0052A5] dark:hover:text-[#00BA7C] hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all">Grilla / Lineup</a>
+                    <a href="#entradas" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-[#0052A5] dark:hover:text-[#00BA7C] hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all">Entradas</a>
+                    <a href="#ubicacion" class="px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-[#0052A5] dark:hover:text-[#00BA7C] hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all">Ubicación</a>
+                </nav>
+
+                <!-- Acciones Rápidas & Selector de Tema -->
+                <div class="flex items-center gap-3">
+                    
+                    <!-- Botón Selector de Modo Claro / Oscuro -->
+                    <button type="button" id="theme-toggle-btn" class="flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700/80 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#0052A5] dark:focus:ring-[#7D00BA]" aria-label="Alternar entre modo claro y oscuro">
+                        <span id="theme-icon" class="text-base" aria-hidden="true">🌙</span>
+                        <span id="theme-text" class="hidden sm:inline text-xs font-semibold text-slate-700 dark:text-slate-300">Modo Oscuro</span>
+                    </button>
+
+                    <!-- CTA Navbar -->
+                    <a href="#entradas" class="hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#0052A5] to-[#00923F] dark:from-[#7D00BA] dark:to-[#BA7C00] shadow-md shadow-[#0052A5]/20 hover:opacity-95 hover:scale-[1.02] active:scale-95 transition-all">
+                        Reservar Entradas
+                    </a>
+
+                    <!-- Botón Hamburguesa Móvil -->
+                    <button type="button" id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0052A5] cursor-pointer" aria-expanded="false" aria-label="Abrir menú de navegación">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0F172A]/95 px-4 pt-3 pb-6 space-y-2 backdrop-blur-lg">
+            <a href="#inicio" class="block px-4 py-3 rounded-xl font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Inicio</a>
+            <a href="#espacios" class="block px-4 py-3 rounded-xl font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Espacios & Ferias</a>
+            <a href="#lineup" class="block px-4 py-3 rounded-xl font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Grilla / Lineup (6 Días)</a>
+            <a href="#entradas" class="block px-4 py-3 rounded-xl font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Reserva de Entradas</a>
+            <a href="#ubicacion" class="block px-4 py-3 rounded-xl font-medium text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Ubicación / Autódromo</a>
+            <div class="pt-2">
+                <a href="#entradas" class="w-full flex items-center justify-center py-3 rounded-xl font-bold text-white bg-gradient-to-r from-[#0052A5] to-[#00923F] dark:from-[#7D00BA] dark:to-[#BA7C00] shadow-md">
+                    Comprar / Reservar Entradas
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- ========================================== -->
+        <!-- 2. HERO SECTION CON CTA                    -->
+        <!-- ========================================== -->
+        <section id="inicio" class="relative overflow-hidden pt-12 pb-20 md:py-28 bg-gradient-to-b from-blue-50/60 via-transparent to-transparent dark:from-slate-900/80 dark:via-[#0F172A] dark:to-[#0F172A]">
+            
+            <!-- Elementos Decorativos de Fondo -->
+            <div class="absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-tr from-[#0052A5]/10 via-[#00923F]/10 to-transparent dark:from-[#7D00BA]/15 dark:via-[#00BA7C]/10 dark:to-transparent rounded-full blur-3xl pointer-events-none -z-10" aria-hidden="true"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                
+                <!-- Badge de Estado -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-emerald-100/80 dark:bg-emerald-950/60 text-[#00923F] dark:text-[#00BA7C] border border-emerald-200 dark:border-emerald-800/60 mb-6 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-[#00923F] dark:bg-[#00BA7C] animate-pulse"></span>
+                    <span>Edición Oficial 2026 • 6 Días Inolvidables en Río Cuarto</span>
+                </div>
+
+                <!-- Título Principal -->
+                <h1 class="font-title font-black text-4xl sm:text-6xl lg:text-7xl text-slate-900 dark:text-white tracking-tight leading-[1.1] max-w-5xl mx-auto">
+                    Vive la Magia del <br class="hidden sm:inline">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0052A5] via-[#00923F] to-[#0052A5] dark:from-[#7D00BA] dark:via-[#BA7C00] dark:to-[#00BA7C]">
+                        Festival del Imperio Sur
+                    </span>
+                </h1>
+
+                <!-- Descripción y Ubicación -->
+                <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                    Música en vivo, gastronomía de primer nivel y la feria más grande de emprendedores regionales en el emblemático <strong>Autódromo Parque Ciudad de Río Cuarto</strong>.
+                </p>
+
+                <!-- Tarjetas de Información Rápida en Hero -->
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-left">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700 shadow-sm">
+                        <span class="text-xs font-semibold text-slate-400 dark:text-slate-400 block uppercase">Duración</span>
+                        <strong class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">6 Jornadas</strong>
+                    </div>
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700 shadow-sm">
+                        <span class="text-xs font-semibold text-slate-400 dark:text-slate-400 block uppercase">Lugar</span>
+                        <strong class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Autódromo Río IV</strong>
+                    </div>
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700 shadow-sm">
+                        <span class="text-xs font-semibold text-slate-400 dark:text-slate-400 block uppercase">Espacios</span>
+                        <strong class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Ferias & Shows</strong>
+                    </div>
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700 shadow-sm">
+                        <span class="text-xs font-semibold text-slate-400 dark:text-slate-400 block uppercase">Entrada Base</span>
+                        <strong class="text-sm sm:text-base font-bold text-[#00923F] dark:text-[#00BA7C]">Desde $12.000</strong>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción Hero -->
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#entradas" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-base text-white bg-gradient-to-r from-[#0052A5] to-[#00923F] dark:from-[#7D00BA] dark:to-[#BA7C00] shadow-lg shadow-[#0052A5]/30 dark:shadow-[#7D00BA]/40 hover:opacity-95 hover:scale-105 active:scale-95 transition-all text-center">
+                        🎟️ Reservar Mis Entradas
+                    </a>
+                    <a href="#lineup" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-base text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 shadow-sm hover:scale-105 active:scale-95 transition-all text-center">
+                        📅 Ver Grilla de Artistas
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 3. ESPACIOS & FERIAS DEL FESTIVAL          -->
+        <!-- ========================================== -->
+        <section id="espacios" class="py-16 md:py-24 bg-white dark:bg-slate-900/60 border-y border-slate-200/70 dark:border-slate-800 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <h2 class="font-title font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white tracking-tight">
+                        Mucho Más que un Recital: <span class="text-[#0052A5] dark:text-[#7D00BA]">Una Experiencia Completa</span>
+                    </h2>
+                    <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300">
+                        El predio del Autódromo integra actividades gastronómicas, comerciales y culturales para toda la familia durante las 6 jornadas.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Espacio 1: Feria Gastronómica -->
+                    <article class="relative group overflow-hidden rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8 hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center text-3xl">
+                                🍔
+                            </div>
+                            <div>
+                                <span class="text-xs uppercase font-bold text-amber-600 dark:text-amber-400 tracking-wider">Polo Culinario</span>
+                                <h3 class="font-title font-bold text-2xl text-slate-900 dark:text-white">Feria Gastronómica</h3>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+                            Más de 30 foodtrucks y puestos de comidas típicas, carnes asadas, opciones vegetarianas/veganas, barras de cerveza artesanal y coctelería regional.
+                        </p>
+                        <div class="mt-6 flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                            <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600">Mesas al aire libre</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600">Sector VIP exclusivo</span>
+                        </div>
+                    </article>
+
+                    <!-- Espacio 2: Feria de Emprendedores -->
+                    <article class="relative group overflow-hidden rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-8 hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-[#00923F] dark:text-[#00BA7C] flex items-center justify-center text-3xl">
+                                🛍️
+                            </div>
+                            <div>
+                                <span class="text-xs uppercase font-bold text-[#00923F] dark:text-[#00BA7C] tracking-wider">Producción & Artesanía</span>
+                                <h3 class="font-title font-bold text-2xl text-slate-900 dark:text-white">Feria de Emprendedores</h3>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+                            Espacio de exhibición y venta directa de artesanos, diseñadores locales y empresas industriales de Río Cuarto y la zona del Imperio Sur.
+                        </p>
+                        <div class="mt-6 flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                            <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600">Artesanías locales</span>
+                            <span class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600">Innovación regional</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 4. GRILLA LINEUP (6 DÍAS / 2x3 CARDS)     -->
+        <!-- ========================================== -->
+        <section id="lineup" class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0052A5] dark:text-[#7D00BA]">
+                        Programación Oficial
+                    </span>
+                    <h2 class="mt-2 font-title font-extrabold text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight">
+                        Grilla de Artistas por Día
+                    </h2>
+                    <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300">
+                        Cada jornada ofrece una temática musical única. Selecciona un día para ver el cronograma completo o reservar tus pases.
+                    </p>
+                </div>
+
+                <!-- Grilla Responsive: 3 Columnas Desktop / 2 Columnas Tablet / 1 Columna Mobile -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    
+                    <!-- Card 1: Martes - Artistas Locales -->
+                    <article class="group rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <figure class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 dark:bg-slate-700">
+                                <img src="https://i.scdn.co/image/ab67616d0000b273f9bffa1b9fc87d70eaa8fe17" alt="Concierto de apertura con artistas locales de Río Cuarto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <figcaption class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-[#0052A5]/90 text-white backdrop-blur-md">
+                                    Día 1 • Martes
+                                </figcaption>
+                                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-600/90 text-white backdrop-blur-md">
+                                    🎸 Locales
+                                </span>
+                            </figure>
+                            <div class="p-6">
+                                <h3 class="font-title font-bold text-xl text-slate-900 dark:text-white group-hover:text-[#0052A5] dark:group-hover:text-[#00BA7C] transition-colors">
+                                    Artistas de Río Cuarto & Región
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                                    Gran velada de apertura con las bandas locales ganadoras del certamen 'Río Cuarto Suena' y orquesta invitada.
+                                </p>
+                                
+                                <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 space-y-1 text-xs">
+                                    <div class="flex justify-between text-slate-600 dark:text-slate-300">
+                                        <span>General:</span> <strong class="text-slate-900 dark:text-white">$12.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-amber-700 dark:text-amber-400">
+                                        <span>VIP:</span> <strong class="font-bold">$28.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-purple-700 dark:text-purple-400">
+                                        <span>UltraVIP:</span> <strong class="font-bold">$55.000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0 grid grid-cols-2 gap-2">
+                            <button type="button" onclick="openDayModal(1)" class="w-full py-2.5 px-3 rounded-xl font-semibold text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer text-center">
+                                🔍 Ver Detalles
+                            </button>
+                            <button type="button" onclick="selectDayInForm(1)" class="w-full py-2.5 px-3 rounded-xl font-bold text-xs text-white bg-[#0052A5] dark:bg-[#7D00BA] hover:opacity-90 transition-opacity cursor-pointer text-center">
+                                🎟️ Reservar
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Miércoles - Salsa & Bachata -->
+                    <article class="group rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <figure class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 dark:bg-slate-700">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ60SjBfynBEmVPtkpA9ZB5wwTNdzDvtLBP4A9-h92CB1sPT7szt_aWSv8EJA004fRmIQKCJHbpLznjKkoSmUwSiGXe_wyC_2Mfx2SzRQ&s=10" alt="Noche de Salsa y Bachata con Dani J y Marc Anthony" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <figcaption class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-[#0052A5]/90 text-white backdrop-blur-md">
+                                    Día 2 • Miércoles
+                                </figcaption>
+                                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-pink-600/90 text-white backdrop-blur-md">
+                                    💃 Salsa & Bachata
+                                </span>
+                            </figure>
+                            <div class="p-6">
+                                <h3 class="font-title font-bold text-xl text-slate-900 dark:text-white group-hover:text-[#0052A5] dark:group-hover:text-[#00BA7C] transition-colors">
+                                    Dani J & Marc Anthony
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                                    Noche caribeña y romántica con clases de baile al aire libre y las dos voces más aclamadas de la salsa y bachata.
+                                </p>
+                                
+                                <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 space-y-1 text-xs">
+                                    <div class="flex justify-between text-slate-600 dark:text-slate-300">
+                                        <span>General:</span> <strong class="text-slate-900 dark:text-white">$18.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-amber-700 dark:text-amber-400">
+                                        <span>VIP:</span> <strong class="font-bold">$40.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-purple-700 dark:text-purple-400">
+                                        <span>UltraVIP:</span> <strong class="font-bold">$80.000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0 grid grid-cols-2 gap-2">
+                            <button type="button" onclick="openDayModal(2)" class="w-full py-2.5 px-3 rounded-xl font-semibold text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer text-center">
+                                🔍 Ver Detalles
+                            </button>
+                            <button type="button" onclick="selectDayInForm(2)" class="w-full py-2.5 px-3 rounded-xl font-bold text-xs text-white bg-[#0052A5] dark:bg-[#7D00BA] hover:opacity-90 transition-opacity cursor-pointer text-center">
+                                🎟️ Reservar
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: Jueves - Pop & Baladas -->
+                    <article class="group rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <figure class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 dark:bg-slate-700">
+                                <img src="https://i.scdn.co/image/ab67616100005174152dcec8175d19fb12eeb8e0" alt="Noche de Pop y Baladas con Cristian Castro, Reik y Maná" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <figcaption class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-[#0052A5]/90 text-white backdrop-blur-md">
+                                    Día 3 • Jueves
+                                </figcaption>
+                                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-violet-600/90 text-white backdrop-blur-md">
+                                    ✨ Pop & Baladas
+                                </span>
+                            </figure>
+                            <div class="p-6">
+                                <h3 class="font-title font-bold text-xl text-slate-900 dark:text-white group-hover:text-[#0052A5] dark:group-hover:text-[#00BA7C] transition-colors">
+                                    Cristian Castro, Reik & Maná
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                                    Una velada emocionante recorriendo los clásicos y éxitos románticos en el escenario central del Río.
+                                </p>
+                                
+                                <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 space-y-1 text-xs">
+                                    <div class="flex justify-between text-slate-600 dark:text-slate-300">
+                                        <span>General:</span> <strong class="text-slate-900 dark:text-white">$20.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-amber-700 dark:text-amber-400">
+                                        <span>VIP:</span> <strong class="font-bold">$45.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-purple-700 dark:text-purple-400">
+                                        <span>UltraVIP:</span> <strong class="font-bold">$90.000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0 grid grid-cols-2 gap-2">
+                            <button type="button" onclick="openDayModal(3)" class="w-full py-2.5 px-3 rounded-xl font-semibold text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer text-center">
+                                🔍 Ver Detalles
+                            </button>
+                            <button type="button" onclick="selectDayInForm(3)" class="w-full py-2.5 px-3 rounded-xl font-bold text-xs text-white bg-[#0052A5] dark:bg-[#7D00BA] hover:opacity-90 transition-opacity cursor-pointer text-center">
+                                🎟️ Reservar
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Card 4: Viernes - Rock Nacional -->
+                    <article class="group rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <figure class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 dark:bg-slate-700">
+                                <img src="https://i.scdn.co/image/ab6761610000e5eb5224159957a58b27db7947e2" alt="Noche de Rock con Airbag, Calamaro y Auténticos Decadentes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <figcaption class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-[#0052A5]/90 text-white backdrop-blur-md">
+                                    Día 4 • Viernes
+                                </figcaption>
+                                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-600/90 text-white backdrop-blur-md">
+                                    ⚡ Rock Nacional
+                                </span>
+                            </figure>
+                            <div class="p-6">
+                                <h3 class="font-title font-bold text-xl text-slate-900 dark:text-white group-hover:text-[#0052A5] dark:group-hover:text-[#00BA7C] transition-colors">
+                                    Airbag, Calamaro & Decadentes
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                                    Guitarras al rojo vivo, fiesta popular e himnos del rock argentino para iniciar el fin de semana con todo.
+                                </p>
+                                
+                                <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 space-y-1 text-xs">
+                                    <div class="flex justify-between text-slate-600 dark:text-slate-300">
+                                        <span>General:</span> <strong class="text-slate-900 dark:text-white">$20.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-amber-700 dark:text-amber-400">
+                                        <span>VIP:</span> <strong class="font-bold">$45.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-purple-700 dark:text-purple-400">
+                                        <span>UltraVIP:</span> <strong class="font-bold">$90.000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0 grid grid-cols-2 gap-2">
+                            <button type="button" onclick="openDayModal(4)" class="w-full py-2.5 px-3 rounded-xl font-semibold text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer text-center">
+                                🔍 Ver Detalles
+                            </button>
+                            <button type="button" onclick="selectDayInForm(4)" class="w-full py-2.5 px-3 rounded-xl font-bold text-xs text-white bg-[#0052A5] dark:bg-[#7D00BA] hover:opacity-90 transition-opacity cursor-pointer text-center">
+                                🎟️ Reservar
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Card 5: Sábado - Cuarteto Cordobés -->
+                    <article class="group rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <figure class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 dark:bg-slate-700">
+                                <img src="https://static.cdn.cadena3.com/admin/playerswf/fotos/ARCHI_9634421200x771.jpg" alt="Noche de Cuarteto con Q Lokura, Luck Ra y La Konga" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <figcaption class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-[#0052A5]/90 text-white backdrop-blur-md">
+                                    Día 5 • Sábado
+                                </figcaption>
+                                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/90 text-white backdrop-blur-md">
+                                    🪗 Fiesta Cuartetera
+                                </span>
+                            </figure>
+                            <div class="p-6">
+                                <h3 class="font-title font-bold text-xl text-slate-900 dark:text-white group-hover:text-[#0052A5] dark:group-hover:text-[#00BA7C] transition-colors">
+                                    Q' Lokura, Luck Ra & La Konga
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                                    La noche más esperada de Córdoba: baile continuo, energía y el auténtico tunga-tunga hasta la madrugada.
+                                </p>
+                                
+                                <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 space-y-1 text-xs">
+                                    <div class="flex justify-between text-slate-600 dark:text-slate-300">
+                                        <span>General:</span> <strong class="text-slate-900 dark:text-white">$18.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-amber-700 dark:text-amber-400">
+                                        <span>VIP:</span> <strong class="font-bold">$40.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-purple-700 dark:text-purple-400">
+                                        <span>UltraVIP:</span> <strong class="font-bold">$85.000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0 grid grid-cols-2 gap-2">
+                            <button type="button" onclick="openDayModal(5)" class="w-full py-2.5 px-3 rounded-xl font-semibold text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer text-center">
+                                🔍 Ver Detalles
+                            </button>
+                            <button type="button" onclick="selectDayInForm(5)" class="w-full py-2.5 px-3 rounded-xl font-bold text-xs text-white bg-[#0052A5] dark:bg-[#7D00BA] hover:opacity-90 transition-opacity cursor-pointer text-center">
+                                🎟️ Reservar
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Card 6: Domingo - Folklore & Tradición -->
+                    <article class="group rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <figure class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 dark:bg-slate-700">
+                                <img src="https://www.cmtv.com.ar/imagenes_artistas/2473.webp" alt="Noche de Folklore con Destino San Javier, Soledad y Campedrinos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <figcaption class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-[#0052A5]/90 text-white backdrop-blur-md">
+                                    Día 6 • Domingo
+                                </figcaption>
+                                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-700/90 text-white backdrop-blur-md">
+                                    🌾 Gran Cierre Folklore
+                                </span>
+                            </figure>
+                            <div class="p-6">
+                                <h3 class="font-title font-bold text-xl text-slate-900 dark:text-white group-hover:text-[#0052A5] dark:group-hover:text-[#00BA7C] transition-colors">
+                                    Soledad, Destino San Javier & Campedrinos
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                                    El gran cierre de oro familiar honrando nuestras raíces culturales con las voces más consagradas del país.
+                                </p>
+                                
+                                <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700/60 space-y-1 text-xs">
+                                    <div class="flex justify-between text-slate-600 dark:text-slate-300">
+                                        <span>General:</span> <strong class="text-slate-900 dark:text-white">$15.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-amber-700 dark:text-amber-400">
+                                        <span>VIP:</span> <strong class="font-bold">$35.000</strong>
+                                    </div>
+                                    <div class="flex justify-between text-purple-700 dark:text-purple-400">
+                                        <span>UltraVIP:</span> <strong class="font-bold">$75.000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0 grid grid-cols-2 gap-2">
+                            <button type="button" onclick="openDayModal(6)" class="w-full py-2.5 px-3 rounded-xl font-semibold text-xs text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer text-center">
+                                🔍 Ver Detalles
+                            </button>
+                            <button type="button" onclick="selectDayInForm(6)" class="w-full py-2.5 px-3 rounded-xl font-bold text-xs text-white bg-[#0052A5] dark:bg-[#7D00BA] hover:opacity-90 transition-opacity cursor-pointer text-center">
+                                🎟️ Reservar
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 5. FORMULARIO REACTIVO DE RESERVA         -->
+        <!-- ========================================== -->
+        <section id="entradas" class="py-16 md:py-24 bg-gradient-to-b from-slate-100/80 via-white to-slate-100/50 dark:from-slate-900/90 dark:via-[#0F172A] dark:to-slate-900/60 border-t border-slate-200 dark:border-slate-800 transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-12">
+                    <span class="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#00923F] dark:text-[#00BA7C]">
+                        Venta Oficial y Cotizador
+                    </span>
+                    <h2 class="mt-2 font-title font-extrabold text-3xl sm:text-5xl text-slate-900 dark:text-white tracking-tight">
+                        Reserva tus Entradas
+                    </h2>
+                    <p class="mt-3 text-base text-slate-600 dark:text-slate-300">
+                        Selecciona tu jornada, elige la categoría de pase y obtén el cálculo automático de tu reserva al instante.
+                    </p>
+                </div>
+
+                <!-- Banner Verde de Confirmación (Estado de Éxito UI) -->
+                <div id="booking-success-banner" class="hidden mb-8 p-6 rounded-3xl bg-emerald-50 dark:bg-emerald-950/70 border-2 border-emerald-400 dark:border-emerald-600 shadow-xl" role="alert" aria-live="polite">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-[#00923F] text-white flex items-center justify-center text-xl shrink-0 font-bold shadow-md">
+                            ✓
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-title font-bold text-xl text-emerald-900 dark:text-emerald-200">
+                                ¡Reserva Confirmada con Éxito!
+                            </h3>
+                            <div id="success-banner-details">
+                                <!-- Se inyecta dinámicamente vía app.js -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de Reserva -->
+                <form id="booking-form" class="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-10 border border-slate-200/90 dark:border-slate-700 shadow-xl space-y-6">
+                    
+                    <fieldset class="space-y-6">
+                        <legend class="sr-only">Datos del Solicitante y Elección de Entradas</legend>
+
+                        <!-- Fila 1: Datos Personales -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="ticket-name" class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-2">
+                                    Nombre Completo *
+                                </label>
+                                <input type="text" id="ticket-name" name="name" required placeholder="Ej. Juan Pérez" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0052A5] dark:focus:ring-[#7D00BA] transition-all cursor-text">
+                            </div>
+
+                            <div>
+                                <label for="ticket-email" class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-2">
+                                    Correo Electrónico *
+                                </label>
+                                <input type="email" id="ticket-email" name="email" required placeholder="juan.perez@ejemplo.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0052A5] dark:focus:ring-[#7D00BA] transition-all cursor-text">
+                            </div>
+                        </div>
+
+                        <!-- Fila 2: Teléfono & Jornada -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="ticket-phone" class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-2">
+                                    Teléfono Móvil *
+                                </label>
+                                <input type="tel" id="ticket-phone" name="phone" required placeholder="Ej. +54 9 358 4123456" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0052A5] dark:focus:ring-[#7D00BA] transition-all cursor-text">
+                            </div>
+
+                            <div>
+                                <label for="ticket-day" class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-2">
+                                    Jornada del Festival *
+                                </label>
+                                <select id="ticket-day" name="day" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0052A5] dark:focus:ring-[#7D00BA] transition-all cursor-pointer font-medium">
+                                    <option value="1">Día 1 (Martes) — Artistas Locales</option>
+                                    <option value="2">Día 2 (Miércoles) — Salsa & Bachata</option>
+                                    <option value="3">Día 3 (Jueves) — Pop & Baladas</option>
+                                    <option value="4">Día 4 (Viernes) — Rock Nacional</option>
+                                    <option value="5">Día 5 (Sábado) — Cuarteto Cordobés</option>
+                                    <option value="6">Día 6 (Domingo) — Folklore & Tradición</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Tipo de Entrada & Cantidad -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="ticket-pass-type" class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-2">
+                                    Tipo de Pase / Categoría *
+                                </label>
+                                <select id="ticket-pass-type" name="passType" class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0052A5] dark:focus:ring-[#7D00BA] transition-all cursor-pointer font-semibold">
+                                    <option value="general">Pase General (Sector Común y Ferias)</option>
+                                    <option value="vip">Pase VIP (Gastronomía Preferencial & Frente)</option>
+                                    <option value="ultravip">Pase UltraVIP (Todo Incluido & Backstage)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="ticket-quantity" class="block text-xs font-bold uppercase text-slate-700 dark:text-slate-300 mb-2">
+                                    Cantidad de Entradas
+                                </label>
+                                <div class="flex items-center">
+                                    <button type="button" id="decrease-qty-btn" class="px-4 py-3 rounded-l-xl bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors font-bold cursor-pointer" aria-label="Disminuir cantidad">-</button>
+                                    <input type="number" id="ticket-quantity" name="quantity" min="1" max="20" value="1" class="w-full py-3 text-center border-y border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white font-bold focus:outline-none focus:ring-0">
+                                    <button type="button" id="increase-qty-btn" class="px-4 py-3 rounded-r-xl bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors font-bold cursor-pointer" aria-label="Aumentar cantidad">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <!-- Resumen del Cálculo Reactivo en Tiempo Real -->
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-700/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 block">Precio Unitario</span>
+                            <span id="unit-price-display" class="text-lg font-bold text-slate-800 dark:text-slate-200">$12.000</span>
+                        </div>
+                        <div class="text-center sm:text-right">
+                            <span class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 block">Costo Total a Pagar</span>
+                            <output id="total-cost-display" class="text-2xl sm:text-3xl font-black text-[#00923F] dark:text-[#00BA7C] block">
+                                $12.000
+                            </output>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Envío -->
+                    <button type="submit" id="submit-booking-btn" class="w-full py-4 px-8 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-[#0052A5] to-[#00923F] dark:from-[#7D00BA] dark:to-[#BA7C00] shadow-lg shadow-[#0052A5]/30 dark:shadow-[#7D00BA]/40 hover:opacity-95 hover:scale-[1.01] active:scale-98 transition-all flex items-center justify-center cursor-pointer">
+                        <span>Confirmar Reserva de Entradas</span>
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </button>
+
+                </form>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- 6. UBICACIÓN & AUTÓDROMO DE RÍO CUARTO     -->
+        <!-- ========================================== -->
+        <section id="ubicacion" class="py-16 md:py-24 bg-white dark:bg-slate-900/40 border-t border-slate-200/80 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    
+                    <!-- Columna Informativa de Accesos y Ubicación -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-100 dark:bg-purple-950/60 text-[#0052A5] dark:text-[#00BA7C] border border-blue-200 dark:border-purple-800/60 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-[#0052A5] dark:bg-[#00BA7C] animate-pulse"></span>
+                            <span>Sede Oficial del Festival 2026</span>
+                        </div>
+
+                        <h2 class="font-title font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-white tracking-tight leading-tight">
+                            Autódromo Parque Ciudad de Río Cuarto
+                        </h2>
+
+                        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                            El Festival del Imperio Sur 2026 traslada su magnitud al emblemático <strong>Autódromo de Río Cuarto</strong>. Un predio integral de más de 30 hectáreas acondicionado con múltiples accesos viales, boxes equipados para ferias gastronómicas, sanitarios de material y la mayor capacidad de estacionamiento y concurrencia de la región.
+                        </p>
+
+                        <!-- Puntos de Información & Servicios -->
+                        <div class="space-y-4 pt-2">
+                            <!-- Coordenadas & Dirección -->
+                            <div class="flex items-start gap-3.5 text-sm text-slate-700 dark:text-slate-300">
+                                <span class="w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-[#0052A5] dark:text-blue-300 flex items-center justify-center font-bold text-lg shrink-0 shadow-sm">📍</span>
+                                <div>
+                                    <strong class="font-semibold text-slate-900 dark:text-white block">Dirección & Coordenadas GPS</strong>
+                                    <span>Ruta Nacional 8 Km 609, Río Cuarto, Córdoba.</span>
+                                    <div class="mt-1.5 flex items-center gap-2 flex-wrap">
+                                        <code class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-mono font-bold text-[#0052A5] dark:text-[#00BA7C] border border-slate-200 dark:border-slate-700 select-all">-33.178168, -64.365759</code>
+                                        <button type="button" id="copy-coords-btn" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" aria-label="Copiar coordenadas GPS al portapapeles">
+                                            <span id="copy-coords-icon" aria-hidden="true">📋</span>
+                                            <span id="copy-coords-text">Copiar Coordenadas</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Estacionamiento -->
+                            <div class="flex items-start gap-3.5 text-sm text-slate-700 dark:text-slate-300">
+                                <span class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-[#00923F] dark:text-emerald-300 flex items-center justify-center font-bold text-lg shrink-0 shadow-sm">🅿️</span>
+                                <div>
+                                    <strong class="font-semibold text-slate-900 dark:text-white block">Estacionamiento Oficial Vigilado</strong>
+                                    <span>Capacidad para más de 6.000 vehículos dentro del predio con seguridad privada, iluminación perimetral y carriles de acceso rápido.</span>
+                                </div>
+                            </div>
+
+                            <!-- Transporte Urbano -->
+                            <div class="flex items-start gap-3.5 text-sm text-slate-700 dark:text-slate-300">
+                                <span class="w-9 h-9 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 flex items-center justify-center font-bold text-lg shrink-0 shadow-sm">🚌</span>
+                                <div>
+                                    <strong class="font-semibold text-slate-900 dark:text-white block">Transporte Urbano & Colectivos Especiales</strong>
+                                    <span>Servicios directos de refuerzo desde Plaza Roca y la Nueva Terminal durante las 6 jornadas, con dársena exclusiva en el ingreso.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA para Abrir Navegación en Google Maps -->
+                        <div class="pt-2 flex flex-wrap items-center gap-3">
+                            <a href="https://www.google.com/maps?q=-33.178168,-64.365759" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-[#0052A5] to-[#00923F] dark:from-[#7D00BA] dark:to-[#BA7C00] shadow-md shadow-[#0052A5]/25 dark:shadow-[#7D00BA]/30 hover:opacity-95 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                <span>Cómo Llegar en Google Maps</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Columna Multimedia: Foto en Alta Resolución & Mapa Interactivo -->
+                    <div class="lg:col-span-6 space-y-4">
+                        
+                        <!-- Fotografía del Autódromo de Río Cuarto -->
+                        <figure class="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xl bg-slate-100 dark:bg-slate-800 group">
+                            <picture>
+                                <source srcset="img/autodromo-rio-cuarto.webp" type="image/webp">
+                                <img src="img/autodromo-rio-cuarto.jpg" alt="Vista aérea del Autódromo Parque Ciudad de Río Cuarto, predio oficial del Festival del Imperio Sur 2026" class="w-full h-64 sm:h-72 object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                            </picture>
+                            <figcaption class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/85 via-black/50 to-transparent text-white text-xs sm:text-sm font-medium">
+                                Predio Oficial Autódromo Parque Ciudad de Río Cuarto — Más de 30 hectáreas para shows, ferias y boxes.
+                            </figcaption>
+                        </figure>
+
+                        <!-- Mapa Interactivo Embebido (Google Maps con Coordenadas Exactas) -->
+                        <div class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-lg bg-slate-100 dark:bg-slate-800">
+                            <iframe 
+                                title="Mapa interactivo de ubicación del Autódromo Parque Ciudad de Río Cuarto"
+                                src="https://maps.google.com/maps?q=-33.178168,-64.365759&hl=es&z=14&output=embed"
+                                class="w-full h-52 sm:h-60 border-0"
+                                loading="lazy"
+                                allowfullscreen=""
+                                referrerpolicy="no-referrer-when-downgrade"
+                                aria-label="Mapa interactivo de Google Maps centrado en el Autódromo de Río Cuarto, coordenadas -33.178168, -64.365759">
+                            </iframe>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- 7. MODAL DE DETALLE DE GRILLA DE ARTISTAS  -->
+    <!-- ========================================== -->
+    <div id="lineup-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-day-title">
+        <div class="relative w-full max-w-xl rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 flex flex-col max-h-[90vh]">
+            
+            <!-- Cabecera Modal -->
+            <div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-start justify-between bg-slate-50 dark:bg-slate-800/50">
+                <div>
+                    <span id="modal-day-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-[#0052A5]/10 text-[#0052A5] dark:bg-[#7D00BA]/20 dark:text-purple-300">
+                        <!-- Inyectado por JS -->
+                    </span>
+                    <h3 id="modal-day-title" class="font-title font-extrabold text-2xl text-slate-900 dark:text-white mt-2">
+                        <!-- Inyectado por JS -->
+                    </h3>
+                    <p id="modal-day-theme" class="text-sm font-semibold text-[#00923F] dark:text-[#00BA7C]">
+                        <!-- Inyectado por JS -->
+                    </p>
+                </div>
+                <button type="button" class="close-modal-trigger p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors cursor-pointer" aria-label="Cerrar modal">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Cuerpo Modal con Scroll -->
+            <div class="p-6 space-y-6 overflow-y-auto">
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-slate-400 mb-1">Descripción</h4>
+                    <p id="modal-day-desc" class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        <!-- Inyectado por JS -->
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-slate-400 mb-2">Artistas Principales</h4>
+                    <ul id="modal-artists-list" class="space-y-1.5 text-sm">
+                        <!-- Inyectado por JS -->
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-slate-400 mb-2">Cronograma de la Jornada</h4>
+                    <div id="modal-schedule-list" class="space-y-2">
+                        <!-- Inyectado por JS -->
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase text-slate-400 mb-2">Valores de Entradas</h4>
+                    <div id="modal-prices-info">
+                        <!-- Inyectado por JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Modal con CTA -->
+            <div class="p-4 sm:p-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between gap-3">
+                <button type="button" class="close-modal-trigger px-5 py-2.5 rounded-xl font-semibold text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+                    Cerrar
+                </button>
+                <button type="button" id="modal-reserve-btn" class="px-6 py-2.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-[#0052A5] to-[#00923F] dark:from-[#7D00BA] dark:to-[#BA7C00] shadow-md hover:opacity-95 transition-all cursor-pointer">
+                    Reservar para Este Día
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 8. FOOTER INSTITUCIONAL                    -->
+    <!-- ========================================== -->
+    <footer class="bg-white dark:bg-[#0F172A] border-t border-slate-200 dark:border-slate-800 py-12 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                
+                <div class="flex flex-col">
+                    <span class="font-title font-extrabold text-xl text-[#0052A5] dark:text-white">
+                        Festival del <span class="text-[#00923F] dark:text-[#00BA7C]">Imperio Sur</span> 2026
+                    </span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                        Autódromo Parque Ciudad de Río Cuarto • Coordenadas: -33.178168, -64.365759
+                    </span>
+                </div>
+
+                <div class="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+                    <a href="#inicio" class="hover:text-[#0052A5] dark:hover:text-[#00BA7C] transition-colors">Inicio</a>
+                    <a href="#lineup" class="hover:text-[#0052A5] dark:hover:text-[#00BA7C] transition-colors">Lineup</a>
+                    <a href="#espacios" class="hover:text-[#0052A5] dark:hover:text-[#00BA7C] transition-colors">Ferias</a>
+                    <a href="#entradas" class="hover:text-[#0052A5] dark:hover:text-[#00BA7C] transition-colors">Entradas</a>
+                </div>
+
+                <div class="text-xs text-slate-500 dark:text-slate-400">
+                    Proyecto Académico Seminario Antigravity • ITEC 2° Año
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Lógica Principal -->
+    <script src="js/app.js"></script>
+</body>
+</html>
