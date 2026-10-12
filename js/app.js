@@ -328,6 +328,8 @@ function initBookingForm() {
     const totalCostDisplay = document.getElementById("total-cost-display");
     const successBanner = document.getElementById("booking-success-banner");
     const successDetails = document.getElementById("success-banner-details");
+    const errorBanner = document.getElementById("booking-error-banner");
+    const errorMessage = document.getElementById("booking-error-message");
 
     if (!form) return;
 
@@ -400,12 +402,36 @@ function initBookingForm() {
         const phoneInput = document.getElementById("ticket-phone");
         const submitBtn = document.getElementById("submit-booking-btn");
 
+        // Ocultar estados previos
+        if (successBanner) successBanner.classList.add("hidden");
+        if (errorBanner) errorBanner.classList.add("hidden");
+
         const name = nameInput ? nameInput.value.trim() : "";
         const email = emailInput ? emailInput.value.trim() : "";
         const phone = phoneInput ? phoneInput.value.trim() : "";
 
+        // Estado UI: Empty / Campos Obligatorios Incompletos
         if (!name || !email || !phone) {
-            alert("Por favor completa todos los campos requeridos para confirmar tu reserva.");
+            if (errorBanner && errorMessage) {
+                errorMessage.textContent = "Por favor completa todos los campos requeridos (Nombre, Correo Electrónico y Teléfono) para continuar.";
+                errorBanner.classList.remove("hidden");
+                errorBanner.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+            if (!name && nameInput) nameInput.focus();
+            else if (!email && emailInput) emailInput.focus();
+            else if (!phone && phoneInput) phoneInput.focus();
+            return;
+        }
+
+        // Estado UI: Error de Formato en Email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            if (errorBanner && errorMessage) {
+                errorMessage.textContent = "El formato de correo electrónico ingresado no es válido (ejemplo: usuario@correo.com).";
+                errorBanner.classList.remove("hidden");
+                errorBanner.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+            if (emailInput) emailInput.focus();
             return;
         }
 
@@ -437,7 +463,8 @@ function initBookingForm() {
                 `;
             }
 
-            // Mostrar Banner Verde de Éxito con los datos reales
+            // Ocultar cualquier error remanente y desplegar Estado de Éxito
+            if (errorBanner) errorBanner.classList.add("hidden");
             if (successBanner && successDetails) {
                 const bookingCode = `FIS26-${Math.floor(100000 + Math.random() * 900000)}`;
                 successDetails.innerHTML = `
